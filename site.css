@@ -12,20 +12,20 @@ html {
 html.dark {
 	--page: 0 0 0;
 	--ink: 226 232 240;
-	--accent: 57 255 20;
-	--accent-2: 16 255 168;
+	--accent: 168 85 247;
+	--accent-2: 99 102 241;
 }
 
 body {
 	font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-	background: radial-gradient(1200px circle at 50% -10%, rgba(16, 185, 129, 0.14), transparent 55%),
+	background: radial-gradient(1200px circle at 50% -10%, rgb(var(--accent) / 0.14), transparent 55%),
 		rgb(var(--page));
 	color: rgb(var(--ink));
 }
 
 html.dark body {
-	background: radial-gradient(1200px circle at 50% -10%, rgba(57, 255, 20, 0.10), transparent 55%),
-		radial-gradient(900px circle at 20% 10%, rgba(16, 255, 168, 0.08), transparent 55%),
+	background: radial-gradient(1200px circle at 50% -10%, rgb(var(--accent) / 0.12), transparent 55%),
+		radial-gradient(900px circle at 20% 10%, rgb(var(--accent-2) / 0.09), transparent 55%),
 		rgb(var(--page));
 }
 
