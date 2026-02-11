@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Umbra VibeWorks</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+			rel="stylesheet"
+		/>
+		<link href="https://fonts.cdnfonts.com/css/geist" rel="stylesheet" />
+		<script src="https://cdn.tailwindcss.com"></script>
+		<script>
+			tailwind.config = {
+				theme: {
+					extend: {
+						fontFamily: {
+							sans: ['Inter', 'system-ui', 'sans-serif'],
+							display: ['Geist', 'Inter', 'sans-serif']
+						},
+						colors: {
+							page: '#f5f5f7',
+							ink: '#0a0a0a'
+						},
+						boxShadow: {
+							sheet: '0 25px 60px rgba(15, 23, 42, 0.08)',
+							logo: '0 20px 45px rgba(15, 23, 42, 0.12)'
+						}
+					}
+				}
+			};
+		</script>
+		<style>
+			html {
+				scroll-behavior: smooth;
+			}
+			body {
+				font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+				background: #f5f5f7;
+				color: #0a0a0a;
+			}
+			.hover-lift {
+				transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
+			}
+			.hover-lift:hover {
+				transform: translateY(-4px);
+				box-shadow: 0 25px 60px rgba(15, 23, 42, 0.12);
+			}
+			.enter {
+				opacity: 0;
+				transform: translateY(20px);
+				transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+					transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+			}
+			.enter.is-in {
+				opacity: 1;
+				transform: translateY(0);
+			}
+			.reveal {
+				opacity: 0;
+				transform: translateY(15px);
+				transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+					transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+				will-change: transform, opacity;
+			}
+			.reveal.is-visible {
+				opacity: 1;
+				transform: translateY(0);
+			}
+			@media (prefers-reduced-motion: reduce) {
+				html {
+					scroll-behavior: auto;
+				}
+				.enter,
+				.reveal,
+				.hover-lift {
+					transition: none !important;
+				}
+				.enter,
+				.reveal {
+					opacity: 1 !important;
+					transform: none !important;
+				}
+			}
+		</style>
+	</head>
+	<body class="min-h-screen bg-page text-ink">
+		<div class="relative overflow-hidden">
+			<div class="pointer-events-none absolute inset-0 opacity-80" aria-hidden="true">
+				<div class="mx-auto mt-[-10rem] h-80 w-80 rounded-full bg-white/70 blur-3xl"></div>
+			</div>
+
+			<main id="page" class="enter relative mx-auto max-w-2xl space-y-32 px-6 py-16 sm:px-8">
+				<!-- HERO -->
+				<header class="space-y-10 text-center">
+					<a
+						href="#updates"
+						class="group mx-auto inline-flex w-fit items-center gap-3 rounded-full border border-white/60 bg-white/80 px-4 py-2 text-sm font-medium text-ink shadow-logo backdrop-blur transition-all duration-500 hover:bg-white/95 hover:shadow-[0_30px_65px_rgba(15,23,42,0.2)]"
+						aria-label="Umbra VibeWorks"
+					>
+						<span
+							class="flex h-8 w-8 items-center justify-center rounded-full bg-ink font-display text-lg text-white transition-all duration-500 group-hover:bg-slate-900"
+						>
+							UV
+						</span>
+						<span class="text-left leading-tight">
+							<span class="block text-xs uppercase tracking-[0.3em] text-slate-500">Umbra</span>
+							<span class="font-display text-base">VibeWorks</span>
+						</span>
+					</a>
+
+					<div class="space-y-6">
+						<p class="text-xs uppercase tracking-[0.4em] text-slate-500">Product lab log</p>
+						<h1 class="font-display text-[3.2rem] leading-[1.05] tracking-tight text-ink sm:text-[4rem] md:text-[5.5rem]">
+							UMBRA
+						</h1>
+						<p class="mx-auto max-w-2xl text-base text-slate-600 sm:text-lg">
+							Light-mode, minimalist feed for shipping updates, tracking what is being built now, and archiving what is done.
+						</p>
+					</div>
+
+					<nav class="flex flex-wrap justify-center gap-4">
+						<a
+							href="#updates"
+							class="hover-lift rounded-full bg-ink px-6 py-3 text-sm font-medium text-white transition active:scale-95"
+						>
+							View updates
+						</a>
+						<a
+							href="#now-building"
+							class="hover-lift rounded-full border border-slate-200 bg-white/70 px-6 py-3 text-sm font-medium text-ink backdrop-blur transition active:scale-95"
+						>
+							View projects
+						</a>
+						<a
+							href="#about"
+							class="hover-lift rounded-full border border-slate-200 bg-white/70 px-6 py-3 text-sm font-medium text-ink backdrop-blur transition active:scale-95"
+						>
+							About
+						</a>
+					</nav>
+				</header>
+
+				<!-- NOW BUILDING -->
+				<section id="now-building" class="reveal space-y-8">
+					<header class="space-y-2">
+						<p class="text-xs uppercase tracking-[0.35em] text-slate-400">Now Building</p>
+						<h2 class="font-display text-3xl text-ink">Current Projects — Work in Progress</h2>
+						<p class="text-base text-slate-600">
+							A deliberate snapshot of what is active right now.
+						</p>
+					</header>
+
+					<div class="space-y-6">
+						<article class="hover-lift rounded-3xl border border-white/60 bg-white/80 p-6 shadow-sheet backdrop-blur">
+							<div class="flex items-center justify-between gap-4">
+								<h3 class="font-display text-2xl text-ink">Signal Prism</h3>
+								<span class="rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-medium text-emerald-700">Live</span>
+							</div>
+							<p class="mt-4 text-base text-slate-600">Narrative telemetry board to make experiment outcomes legible.</p>
+							<p class="mt-2 text-sm text-slate-500">Next up: interface polish + insight tagging.</p>
+						</article>
+
+						<article class="hover-lift rounded-3xl border border-white/60 bg-white/80 p-6 shadow-sheet backdrop-blur">
+							<div class="flex items-center justify-between gap-4">
+								<h3 class="font-display text-2xl text-ink">Field Loom</h3>
+								<span class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-medium text-slate-600">WIP</span>
+							</div>
+							<p class="mt-4 text-base text-slate-600">Notebook-to-build pipeline for makers and small teams.</p>
+							<p class="mt-2 text-sm text-slate-500">Next up: workflow mapping and low-fi tests.</p>
+						</article>
+					</div>
+				</section>
+
+				<!-- ABOUT -->
+				<section id="about" class="reveal space-y-8">
+					<header class="space-y-2">
+						<p class="text-xs uppercase tracking-[0.35em] text-slate-400">About</p>
+						<h2 class="font-display text-3xl text-ink">How the view is brought out</h2>
+						<p class="text-base text-slate-600">
+							Constrained width, generous negative space, crisp hierarchy.
+						</p>
+					</header>
+
+					<div class="rounded-3xl border border-white/60 bg-white/80 p-6 shadow-sheet backdrop-blur">
+						<ul class="space-y-4 text-base text-slate-600">
+							<li><span class="font-medium text-slate-700">Constraint:</span> max width stays document-like for a log aesthetic.</li>
+							<li><span class="font-medium text-slate-700">Negative space:</span> large section gaps let entries breathe.</li>
+							<li><span class="font-medium text-slate-700">Typography:</span> Geist headings + Inter body for a “Product Lab” tone.</li>
+							<li><span class="font-medium text-slate-700">Smooth scroll:</span> anchor navigation glides between sections.</li>
+						</ul>
+					</div>
+				</section>
+
+				<!-- UPDATES -->
+				<section id="updates" class="reveal space-y-8">
+					<header class="space-y-2">
+						<p class="text-xs uppercase tracking-[0.35em] text-slate-400">Updates and Logs</p>
+						<h2 class="font-display text-3xl text-ink">Recent signals</h2>
+						<p class="text-base text-slate-600">Reverse chronological notes, built to skim.</p>
+					</header>
+
+					<div class="rounded-3xl border border-white/60 bg-white/80 p-6 shadow-sheet backdrop-blur">
+						<!-- Timeline row -->
+						<div class="group flex gap-4 py-6 border-b border-slate-100">
+							<div class="flex flex-col items-center">
+								<span class="h-2 w-2 rounded-full bg-slate-300 transition-colors duration-300 group-hover:bg-indigo-400"></span>
+								<span class="mt-2 w-px flex-1 bg-slate-200"></span>
+							</div>
+							<div class="space-y-2">
+								<div class="flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.3em] text-slate-500">
+									<span>Feb 10, 2026</span>
+									<span class="rounded-full bg-slate-900 px-2 py-0.5 font-semibold tracking-[0.2em] text-white">Lab Note</span>
+								</div>
+								<h3 class="font-display text-xl text-ink">Motion system locked</h3>
+								<p class="text-base text-slate-600">Set entrance + reveal timings and refined micro-interactions for a weighted feel.</p>
+							</div>
+						</div>
+
+						<div class="group flex gap-4 py-6 border-b border-slate-100">
+							<div class="flex flex-col items-center">
+								<span class="h-2 w-2 rounded-full bg-slate-300 transition-colors duration-300 group-hover:bg-indigo-400"></span>
+								<span class="mt-2 w-px flex-1 bg-slate-200"></span>
+							</div>
+							<div class="space-y-2">
+								<div class="flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.3em] text-slate-500">
+									<span>Feb 6, 2026</span>
+									<span class="rounded-full bg-slate-900 px-2 py-0.5 font-semibold tracking-[0.2em] text-white">Now Building</span>
+								</div>
+								<h3 class="font-display text-xl text-ink">Signal Prism kickoff</h3>
+								<p class="text-base text-slate-600">Started a prototype to visualize experiment outcomes for collaborators.</p>
+							</div>
+						</div>
+
+						<div class="group flex gap-4 py-6">
+							<div class="flex flex-col items-center">
+								<span class="h-2 w-2 rounded-full bg-slate-300 transition-colors duration-300 group-hover:bg-indigo-400"></span>
+							</div>
+							<div class="space-y-2">
+								<div class="flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.3em] text-slate-500">
+									<span>Feb 1, 2026</span>
+									<span class="rounded-full bg-slate-900 px-2 py-0.5 font-semibold tracking-[0.2em] text-white">Systems</span>
+								</div>
+								<h3 class="font-display text-xl text-ink">Archive refresh</h3>
+								<p class="text-base text-slate-600">Cleaned up completed initiatives and linked artifacts for quick recall.</p>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- PAST PROJECTS -->
+				<section id="past-projects" class="reveal space-y-8">
+					<header class="space-y-2">
+						<p class="text-xs uppercase tracking-[0.35em] text-slate-400">Past Projects</p>
+						<h2 class="font-display text-3xl text-ink">Completed Projects</h2>
+						<p class="text-base text-slate-600">Shipped efforts with outcomes and learnings.</p>
+					</header>
+
+					<div class="grid gap-6">
+						<article class="hover-lift rounded-3xl border border-white/60 bg-white/80 p-6 shadow-sheet backdrop-blur">
+							<h3 class="font-display text-2xl text-ink">Pulse Stitch</h3>
+							<p class="mt-3 text-base text-slate-600">Async ritual bot that nudges teams when qualitative signals drop.</p>
+							<p class="mt-2 text-sm text-slate-500">Outcome: piloted, then archived with a retro.</p>
+						</article>
+						<article class="hover-lift rounded-3xl border border-white/60 bg-white/80 p-6 shadow-sheet backdrop-blur">
+							<h3 class="font-display text-2xl text-ink">Umbra Atlas</h3>
+							<p class="mt-3 text-base text-slate-600">Idea index with stage labels and backlinks to research notes.</p>
+							<p class="mt-2 text-sm text-slate-500">Outcome: became the canonical backlog vault.</p>
+						</article>
+					</div>
+				</section>
+
+				<footer class="space-y-4 border-t border-white/70 pt-8 text-sm text-slate-500">
+					<div class="flex items-center gap-2">
+						<span class="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
+						<span>Live / Operational</span>
+					</div>
+					<p>© <span id="year"></span> Umbra VibeWorks — Product Lab Journal.</p>
+				</footer>
+			</main>
+		</div>
+
+		<script>
+			document.getElementById('year').textContent = new Date().getFullYear();
+
+			window.addEventListener('DOMContentLoaded', () => {
+				const page = document.getElementById('page');
+				requestAnimationFrame(() => page.classList.add('is-in'));
+
+				const revealEls = Array.from(document.querySelectorAll('.reveal'));
+				if (revealEls.length === 0) return;
+
+				const observer = new IntersectionObserver(
+					(entries) => {
+						for (const entry of entries) {
+							if (!entry.isIntersecting) continue;
+							entry.target.classList.add('is-visible');
+							observer.unobserve(entry.target);
+						}
+					},
+					{ root: null, rootMargin: '0px 0px -100px 0px', threshold: 0.15 }
+				);
+
+				for (const el of revealEls) observer.observe(el);
+			});
+		</script>
+	</body>
+</html>
