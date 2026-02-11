@@ -7,7 +7,7 @@ The UI is intentionally restrained (Apple-style): centered document layout, gene
 ## Sections (on the page)
 - Highlights
 - Recent logs (latest entries)
-- Contact
+- Footer (status + GitHub link)
 
 ## Pages
 - [index.html](index.html) — landing page / showcase.
