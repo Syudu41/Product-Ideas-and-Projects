@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Umbra VibeWorks — Logs</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+			rel="stylesheet"
+		/>
+		<link href="https://fonts.cdnfonts.com/css/geist" rel="stylesheet" />
+		<script src="https://cdn.tailwindcss.com"></script>
+		<script>
+			tailwind.config = {
+				theme: {
+					extend: {
+						fontFamily: {
+							sans: ['Inter', 'system-ui', 'sans-serif'],
+							display: ['Geist', 'Inter', 'sans-serif']
+						},
+						colors: {
+							page: '#f8fafc',
+							ink: '#0b1220'
+						},
+						boxShadow: {
+							sheet: '0 18px 50px rgba(15, 23, 42, 0.10)',
+							logo: '0 18px 45px rgba(15, 23, 42, 0.14)'
+						}
+					}
+				}
+			};
+		</script>
+		<link rel="stylesheet" href="./site.css" />
+	</head>
+	<body class="min-h-screen bg-page text-ink">
+		<div class="relative overflow-hidden">
+			<div class="pointer-events-none absolute inset-0 opacity-80" aria-hidden="true">
+				<div class="mx-auto mt-[-12rem] h-[26rem] w-[26rem] rounded-full bg-indigo-200/40 blur-3xl"></div>
+				<div class="mx-auto mt-[-22rem] h-[34rem] w-[34rem] rounded-full bg-violet-200/25 blur-3xl"></div>
+			</div>
+
+			<div class="sticky top-0 z-20 border-b border-white/60 bg-white/60 backdrop-blur">
+				<div class="mx-auto flex max-w-5xl items-center justify-between px-6 py-4 sm:px-8">
+					<a href="./index.html" class="flex items-center gap-3">
+						<span class="flex h-10 w-10 items-center justify-center overflow-hidden rounded-xl bg-white ring-1 ring-slate-200/70">
+							<img src="./UMBRA-logo.png" alt="Umbra logo" class="h-full w-full object-cover" />
+						</span>
+						<span class="font-display text-base tracking-tight text-ink">Umbra VibeWorks</span>
+					</a>
+					<nav class="flex items-center gap-2 text-sm">
+						<a href="./index.html#highlights" class="rounded-full px-3 py-2 text-slate-600 transition hover:bg-slate-900/5 hover:text-ink">Highlights</a>
+						<a href="./logs.html" class="rounded-full bg-slate-900/5 px-3 py-2 font-medium text-ink">Logs</a>
+						<a href="./index.html#contact" class="hidden rounded-full px-3 py-2 text-slate-600 transition hover:bg-slate-900/5 hover:text-ink sm:inline-flex">Contact</a>
+					</nav>
+				</div>
+			</div>
+
+			<main data-enter class="enter relative mx-auto max-w-5xl space-y-14 px-6 py-14 sm:px-8">
+				<header class="space-y-5">
+					<p class="text-xs uppercase tracking-[0.45em] text-slate-500">Logs</p>
+					<h1 class="font-display text-5xl leading-[1.02] tracking-tight text-ink sm:text-6xl">Work log</h1>
+					<p class="max-w-2xl text-base text-slate-600 sm:text-lg">
+						Reverse-chronological updates on builds, experiments, and decisions.
+						Each entry is short on fluff and heavy on signal.
+					</p>
+				</header>
+
+				<section class="reveal space-y-6">
+					<div class="rounded-3xl border border-white/60 bg-white/70 p-6 shadow-sheet backdrop-blur">
+						<div class="space-y-4">
+							<p class="text-sm font-medium text-ink">Work in progress</p>
+							<p class="text-base text-slate-600">
+								This page will hold the full log index once entries are published.
+							</p>
+						</div>
+					</div>
+				</section>
+
+				<footer class="reveal space-y-4 border-t border-white/70 pt-10 text-sm text-slate-500">
+					<div class="flex items-center gap-2">
+						<span class="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
+						<span>Live / Operational</span>
+					</div>
+					<p>© <span data-year></span> Umbra VibeWorks — Product Lab Journal.</p>
+				</footer>
+			</main>
+		</div>
+
+		<script src="./site.js"></script>
+	</body>
+</html>
