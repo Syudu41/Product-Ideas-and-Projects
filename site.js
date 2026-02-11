@@ -22,7 +22,15 @@ function updateThemeToggle() {
 	if (!btn) return;
 	const isDark = document.documentElement.classList.contains('dark');
 	btn.setAttribute('aria-pressed', String(isDark));
-	btn.textContent = isDark ? 'Light' : 'Dark';
+
+	const sun = btn.querySelector('[data-theme-icon="sun"]');
+	const moon = btn.querySelector('[data-theme-icon="moon"]');
+	if (sun) sun.classList.toggle('hidden', !isDark);
+	if (moon) moon.classList.toggle('hidden', isDark);
+
+	if (!sun && !moon) {
+		btn.textContent = isDark ? 'Light' : 'Dark';
+	}
 }
 
 function wireThemeToggle() {

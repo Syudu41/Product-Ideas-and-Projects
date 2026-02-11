@@ -8,8 +8,8 @@ html {
 }
 
 html.dark {
-	--page: 2 6 23;
-	--ink: 241 245 249;
+	--page: 5 7 18;
+	--ink: 226 232 240;
 }
 
 body {
@@ -20,7 +20,8 @@ body {
 }
 
 html.dark body {
-	background: radial-gradient(1200px circle at 50% -10%, rgba(99, 102, 241, 0.22), transparent 55%),
+	background: radial-gradient(1200px circle at 50% -10%, rgba(99, 102, 241, 0.18), transparent 55%),
+		radial-gradient(900px circle at 20% 10%, rgba(124, 58, 237, 0.12), transparent 55%),
 		rgb(var(--page));
 }
 
@@ -32,6 +33,10 @@ html.dark body {
 .hover-lift:hover {
 	transform: translateY(-4px);
 	box-shadow: 0 22px 56px rgba(15, 23, 42, 0.16);
+}
+
+html.dark .hover-lift:hover {
+	box-shadow: 0 22px 56px rgba(0, 0, 0, 0.55);
 }
 
 .enter {
