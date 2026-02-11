@@ -5,6 +5,39 @@ function setCurrentYear() {
 	}
 }
 
+function getPreferredTheme() {
+	const saved = localStorage.getItem('theme');
+	if (saved === 'dark' || saved === 'light') return saved;
+	return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
+
+function applyTheme(theme) {
+	const isDark = theme === 'dark';
+	document.documentElement.classList.toggle('dark', isDark);
+	localStorage.setItem('theme', isDark ? 'dark' : 'light');
+}
+
+function updateThemeToggle() {
+	const btn = document.getElementById('theme-toggle');
+	if (!btn) return;
+	const isDark = document.documentElement.classList.contains('dark');
+	btn.setAttribute('aria-pressed', String(isDark));
+	btn.textContent = isDark ? 'Light' : 'Dark';
+}
+
+function wireThemeToggle() {
+	applyTheme(getPreferredTheme());
+	updateThemeToggle();
+
+	const btn = document.getElementById('theme-toggle');
+	if (!btn) return;
+	btn.addEventListener('click', () => {
+		const isDark = document.documentElement.classList.contains('dark');
+		applyTheme(isDark ? 'light' : 'dark');
+		updateThemeToggle();
+	});
+}
+
 function runEntrance() {
 	const page = document.querySelector('[data-enter]');
 	if (!page) return;
@@ -30,6 +63,7 @@ function observeReveals() {
 }
 
 window.addEventListener('DOMContentLoaded', () => {
+	wireThemeToggle();
 	setCurrentYear();
 	runEntrance();
 	observeReveals();

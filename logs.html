@@ -14,6 +14,7 @@
 		<script src="https://cdn.tailwindcss.com"></script>
 		<script>
 			tailwind.config = {
+				darkMode: 'class',
 				theme: {
 					extend: {
 						fontFamily: {
@@ -21,8 +22,8 @@
 							display: ['Geist', 'Inter', 'sans-serif']
 						},
 						colors: {
-							page: '#f8fafc',
-							ink: '#0b1220'
+							page: 'rgb(var(--page) / <alpha-value>)',
+							ink: 'rgb(var(--ink) / <alpha-value>)'
 						},
 						boxShadow: {
 							sheet: '0 18px 50px rgba(15, 23, 42, 0.10)',
@@ -41,7 +42,7 @@
 				<div class="mx-auto mt-[-22rem] h-[34rem] w-[34rem] rounded-full bg-violet-200/25 blur-3xl"></div>
 			</div>
 
-			<div class="sticky top-0 z-20 border-b border-white/60 bg-white/60 backdrop-blur">
+			<div class="sticky top-0 z-20 border-b border-white/60 bg-white/60 backdrop-blur dark:border-white/10 dark:bg-slate-950/45">
 				<div class="mx-auto flex max-w-5xl items-center justify-between px-6 py-4 sm:px-8">
 					<a href="./index.html" class="flex items-center gap-3">
 						<span class="flex h-10 w-10 items-center justify-center overflow-hidden rounded-xl bg-white ring-1 ring-slate-200/70">
@@ -49,9 +50,41 @@
 						</span>
 						<span class="font-display text-base tracking-tight text-ink">Umbra VibeWorks</span>
 					</a>
-					<nav class="flex items-center gap-2 text-sm">
-						<a href="./index.html#highlights" class="rounded-full px-3 py-2 text-slate-600 transition hover:bg-slate-900/5 hover:text-ink">Highlights</a>
-						<a href="./logs.html" class="rounded-full bg-slate-900/5 px-3 py-2 font-medium text-ink">Logs</a>
+					<nav class="flex items-center gap-1 text-sm">
+						<a href="./index.html#highlights" class="rounded-full px-3 py-2 text-slate-600 transition hover:bg-indigo-500/10 hover:text-indigo-700 dark:text-slate-300 dark:hover:bg-indigo-400/10 dark:hover:text-indigo-200">
+							<span class="inline-flex items-center gap-2">
+								<svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+									<path d="M12 2l1.2 3.8L17 7l-3.8 1.2L12 12l-1.2-3.8L7 7l3.8-1.2L12 2Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+									<path d="M5 12l.9 2.9L9 16l-3.1 1.1L5 20l-.9-2.9L1 16l3.1-1.1L5 12Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+									<path d="M19 12l.9 2.9L23 16l-3.1 1.1L19 20l-.9-2.9L15 16l3.1-1.1L19 12Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+								</svg>
+								Highlights
+							</span>
+						</a>
+						<a href="./logs.html" class="rounded-full bg-indigo-500/10 px-3 py-2 font-medium text-indigo-700 dark:bg-indigo-400/10 dark:text-indigo-200">
+							<span class="inline-flex items-center gap-2">
+								<svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+									<path d="M7 3h10a2 2 0 0 1 2 2v16l-4-2-4 2-4-2-4 2V5a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+									<path d="M9 7h6M9 11h6M9 15h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+								</svg>
+								Logs
+							</span>
+						</a>
+						<button
+							id="theme-toggle"
+							type="button"
+							aria-pressed="false"
+							class="hover-lift ml-1 inline-flex items-center justify-center rounded-full border border-slate-200/80 bg-white/70 p-2 text-slate-700 backdrop-blur transition active:scale-95 dark:border-white/10 dark:bg-slate-950/40 dark:text-slate-200"
+							aria-label="Toggle theme"
+						>
+							<svg data-theme-icon="moon" class="h-5 w-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+								<path d="M21 13.2A7.8 7.8 0 1 1 10.8 3 6.2 6.2 0 0 0 21 13.2Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+							</svg>
+							<svg data-theme-icon="sun" class="hidden h-5 w-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+								<path d="M12 18a6 6 0 1 0-6-6 6 6 0 0 0 6 6Z" stroke="currentColor" stroke-width="1.8"/>
+								<path d="M12 2v2M12 20v2M4 12H2M22 12h-2M5.6 5.6 4.2 4.2M19.8 19.8l-1.4-1.4M18.4 5.6l1.4-1.4M4.2 19.8l1.4-1.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+							</svg>
+						</button>
 					</nav>
 				</div>
 			</div>
@@ -59,25 +92,25 @@
 			<main data-enter class="enter relative mx-auto max-w-5xl space-y-14 px-6 py-14 sm:px-8">
 				<header class="space-y-5">
 					<p class="text-xs uppercase tracking-[0.45em] text-slate-500">Logs</p>
-					<h1 class="font-display text-5xl leading-[1.02] tracking-tight text-ink sm:text-6xl">Work log</h1>
-					<p class="max-w-2xl text-base text-slate-600 sm:text-lg">
+					<h1 class="font-display text-5xl leading-[1.02] tracking-tight text-ink dark:text-slate-50 sm:text-6xl">Work log</h1>
+					<p class="max-w-2xl text-base text-slate-600 dark:text-slate-300 sm:text-lg">
 						Reverse-chronological updates on builds, experiments, and decisions.
 						Each entry is short on fluff and heavy on signal.
 					</p>
 				</header>
 
 				<section class="reveal space-y-6">
-					<div class="rounded-3xl border border-white/60 bg-white/70 p-6 shadow-sheet backdrop-blur">
+					<div class="hover-lift rounded-3xl border border-white/60 bg-white/70 p-6 shadow-sheet backdrop-blur transition-colors hover:border-indigo-300/70 hover:bg-white/85 dark:border-white/10 dark:bg-slate-950/35 dark:hover:border-indigo-400/30 dark:hover:bg-slate-950/55">
 						<div class="space-y-4">
-							<p class="text-sm font-medium text-ink">Work in progress</p>
-							<p class="text-base text-slate-600">
+							<p class="text-sm font-medium text-ink dark:text-slate-50">Work in progress</p>
+							<p class="text-base text-slate-600 dark:text-slate-300">
 								This page will hold the full log index once entries are published.
 							</p>
 						</div>
 					</div>
 				</section>
 
-				<footer class="reveal space-y-4 border-t border-white/70 pt-10 text-sm text-slate-500">
+				<footer class="reveal space-y-4 border-t border-white/70 pt-10 text-sm text-slate-500 dark:border-white/10 dark:text-slate-400">
 					<div class="flex flex-wrap items-center justify-between gap-4">
 						<div class="flex items-center gap-2">
 							<span class="h-2 w-2 rounded-full bg-amber-400 animate-pulse"></span>

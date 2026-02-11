@@ -2,14 +2,31 @@ html {
 	scroll-behavior: smooth;
 }
 
+:root {
+	--page: 248 250 252;
+	--ink: 11 18 32;
+}
+
+html.dark {
+	--page: 2 6 23;
+	--ink: 241 245 249;
+}
+
 body {
 	font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-	background: radial-gradient(1200px circle at 50% -10%, rgba(99, 102, 241, 0.16), transparent 55%), #f8fafc;
-	color: #0b1220;
+	background: radial-gradient(1200px circle at 50% -10%, rgba(99, 102, 241, 0.16), transparent 55%),
+		rgb(var(--page));
+	color: rgb(var(--ink));
+}
+
+html.dark body {
+	background: radial-gradient(1200px circle at 50% -10%, rgba(99, 102, 241, 0.22), transparent 55%),
+		rgb(var(--page));
 }
 
 .hover-lift {
-	transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
+	transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease,
+		background-color 0.35s ease, border-color 0.35s ease, color 0.35s ease;
 }
 
 .hover-lift:hover {

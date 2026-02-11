@@ -14,6 +14,7 @@
 		<script src="https://cdn.tailwindcss.com"></script>
 		<script>
 			tailwind.config = {
+				darkMode: 'class',
 				theme: {
 					extend: {
 						fontFamily: {
@@ -21,8 +22,8 @@
 							display: ['Geist', 'Inter', 'sans-serif']
 						},
 						colors: {
-							page: '#f8fafc',
-							ink: '#0b1220'
+							page: 'rgb(var(--page) / <alpha-value>)',
+							ink: 'rgb(var(--ink) / <alpha-value>)'
 						},
 						boxShadow: {
 							sheet: '0 18px 50px rgba(15, 23, 42, 0.10)',
@@ -41,7 +42,7 @@
 				<div class="mx-auto mt-[-22rem] h-[34rem] w-[34rem] rounded-full bg-violet-200/25 blur-3xl"></div>
 			</div>
 
-			<div class="sticky top-0 z-20 border-b border-white/60 bg-white/60 backdrop-blur">
+			<div class="sticky top-0 z-20 border-b border-white/60 bg-white/60 backdrop-blur dark:border-white/10 dark:bg-slate-950/45">
 				<div class="mx-auto flex max-w-5xl items-center justify-between px-6 py-4 sm:px-8">
 					<a href="./index.html" class="flex items-center gap-3">
 						<span class="flex h-10 w-10 items-center justify-center overflow-hidden rounded-xl bg-white ring-1 ring-slate-200/70">
@@ -49,10 +50,50 @@
 						</span>
 						<span class="font-display text-base tracking-tight text-ink">Umbra VibeWorks</span>
 					</a>
-					<nav class="flex items-center gap-2 text-sm">
-						<a href="#highlights" class="rounded-full px-3 py-2 text-slate-600 transition hover:bg-slate-900/5 hover:text-ink">Highlights</a>
-						<a href="#latest" class="rounded-full px-3 py-2 text-slate-600 transition hover:bg-slate-900/5 hover:text-ink">Latest</a>
-						<a href="./logs.html" class="rounded-full px-3 py-2 text-slate-600 transition hover:bg-slate-900/5 hover:text-ink">Logs</a>
+					<nav class="flex items-center gap-1 text-sm">
+						<a href="#highlights" class="rounded-full px-3 py-2 text-slate-600 transition hover:bg-indigo-500/10 hover:text-indigo-700 dark:text-slate-300 dark:hover:bg-indigo-400/10 dark:hover:text-indigo-200">
+							<span class="inline-flex items-center gap-2">
+								<svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+									<path d="M12 2l1.2 3.8L17 7l-3.8 1.2L12 12l-1.2-3.8L7 7l3.8-1.2L12 2Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+									<path d="M5 12l.9 2.9L9 16l-3.1 1.1L5 20l-.9-2.9L1 16l3.1-1.1L5 12Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+									<path d="M19 12l.9 2.9L23 16l-3.1 1.1L19 20l-.9-2.9L15 16l3.1-1.1L19 12Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+								</svg>
+								Highlights
+							</span>
+						</a>
+						<a href="#latest" class="rounded-full px-3 py-2 text-slate-600 transition hover:bg-indigo-500/10 hover:text-indigo-700 dark:text-slate-300 dark:hover:bg-indigo-400/10 dark:hover:text-indigo-200">
+							<span class="inline-flex items-center gap-2">
+								<svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+									<path d="M12 8v5l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+									<path d="M21 12a9 9 0 1 1-9-9 9 9 0 0 1 9 9Z" stroke="currentColor" stroke-width="1.8"/>
+								</svg>
+								Latest
+							</span>
+						</a>
+						<a href="./logs.html" class="rounded-full px-3 py-2 text-slate-600 transition hover:bg-indigo-500/10 hover:text-indigo-700 dark:text-slate-300 dark:hover:bg-indigo-400/10 dark:hover:text-indigo-200">
+							<span class="inline-flex items-center gap-2">
+								<svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+									<path d="M7 3h10a2 2 0 0 1 2 2v16l-4-2-4 2-4-2-4 2V5a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+									<path d="M9 7h6M9 11h6M9 15h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+								</svg>
+								Logs
+							</span>
+						</a>
+						<button
+							id="theme-toggle"
+							type="button"
+							aria-pressed="false"
+							class="hover-lift ml-1 inline-flex items-center justify-center rounded-full border border-slate-200/80 bg-white/70 p-2 text-slate-700 backdrop-blur transition active:scale-95 dark:border-white/10 dark:bg-slate-950/40 dark:text-slate-200"
+							aria-label="Toggle theme"
+						>
+							<svg data-theme-icon="moon" class="h-5 w-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+								<path d="M21 13.2A7.8 7.8 0 1 1 10.8 3 6.2 6.2 0 0 0 21 13.2Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+							</svg>
+							<svg data-theme-icon="sun" class="hidden h-5 w-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+								<path d="M12 18a6 6 0 1 0-6-6 6 6 0 0 0 6 6Z" stroke="currentColor" stroke-width="1.8"/>
+								<path d="M12 2v2M12 20v2M4 12H2M22 12h-2M5.6 5.6 4.2 4.2M19.8 19.8l-1.4-1.4M18.4 5.6l1.4-1.4M4.2 19.8l1.4-1.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+							</svg>
+						</button>
 					</nav>
 				</div>
 			</div>
@@ -62,35 +103,35 @@
 				<header class="grid gap-10 md:grid-cols-[1.2fr_0.8fr] md:items-center">
 					<div class="space-y-7">
 						<p class="text-xs uppercase tracking-[0.45em] text-slate-500">Product Lab</p>
-						<h1 class="font-display text-5xl leading-[1.02] tracking-tight text-ink sm:text-6xl">
+						<h1 class="font-display text-5xl leading-[1.02] tracking-tight text-ink dark:text-slate-50 sm:text-6xl">
 							Build logs, prototypes, and product experiments.
 						</h1>
-						<p class="max-w-xl text-base text-slate-600 sm:text-lg">
+						<p class="max-w-xl text-base text-slate-600 dark:text-slate-300 sm:text-lg">
 							Umbra VibeWorks is where I document how ideas move from raw signal to shipped artifacts.
 							Short, honest updates—high signal, low ceremony.
 						</p>
 						<div class="flex flex-wrap items-center gap-3">
 							<a href="#latest" class="hover-lift rounded-full bg-gradient-to-b from-indigo-600 to-violet-600 px-6 py-3 text-sm font-medium text-white shadow-[0_14px_30px_rgba(99,102,241,0.28)] transition active:scale-95">Read latest</a>
 							<a href="#highlights" class="hover-lift rounded-full border border-slate-200/80 bg-white/70 px-6 py-3 text-sm font-medium text-ink backdrop-blur transition active:scale-95">See highlights</a>
-							<a href="./logs.html" class="rounded-full px-4 py-3 text-sm font-medium text-slate-600 transition hover:text-ink">View all logs →</a>
+							<a href="./logs.html" class="rounded-full px-4 py-3 text-sm font-medium text-slate-600 transition hover:text-indigo-700 dark:text-slate-300 dark:hover:text-indigo-200">View all logs →</a>
 						</div>
 						<div class="flex flex-wrap gap-2 pt-2">
-							<span class="rounded-full border border-slate-200/70 bg-white/60 px-3 py-1 text-xs text-slate-600">Prototyping</span>
-							<span class="rounded-full border border-slate-200/70 bg-white/60 px-3 py-1 text-xs text-slate-600">UI systems</span>
-							<span class="rounded-full border border-slate-200/70 bg-white/60 px-3 py-1 text-xs text-slate-600">Product thinking</span>
-							<span class="rounded-full border border-slate-200/70 bg-white/60 px-3 py-1 text-xs text-slate-600">Shipping notes</span>
+							<span class="rounded-full border border-slate-200/70 bg-white/60 px-3 py-1 text-xs text-slate-600 dark:border-white/10 dark:bg-slate-950/35 dark:text-slate-300">Prototyping</span>
+							<span class="rounded-full border border-slate-200/70 bg-white/60 px-3 py-1 text-xs text-slate-600 dark:border-white/10 dark:bg-slate-950/35 dark:text-slate-300">UI systems</span>
+							<span class="rounded-full border border-slate-200/70 bg-white/60 px-3 py-1 text-xs text-slate-600 dark:border-white/10 dark:bg-slate-950/35 dark:text-slate-300">Product thinking</span>
+							<span class="rounded-full border border-slate-200/70 bg-white/60 px-3 py-1 text-xs text-slate-600 dark:border-white/10 dark:bg-slate-950/35 dark:text-slate-300">Shipping notes</span>
 						</div>
 					</div>
 
 					<div class="reveal">
-						<div class="rounded-3xl border border-white/60 bg-white/70 p-7 shadow-sheet backdrop-blur">
+						<div class="hover-lift rounded-3xl border border-white/60 bg-white/70 p-7 shadow-sheet backdrop-blur transition-colors hover:border-indigo-300/70 hover:bg-white/80 dark:border-white/10 dark:bg-slate-950/35 dark:hover:border-indigo-400/30 dark:hover:bg-slate-950/55">
 							<div class="flex items-start justify-between gap-4">
 								<div class="space-y-2">
 									<p class="text-xs uppercase tracking-[0.35em] text-slate-500">Status</p>
-									<p class="font-display text-2xl text-ink">In progress</p>
-									<p class="text-sm text-slate-600">Building the lab—logs will publish here soon.</p>
+									<p class="font-display text-2xl text-ink dark:text-slate-50">In progress</p>
+									<p class="text-sm text-slate-600 dark:text-slate-300">Building the lab—logs will publish here soon.</p>
 								</div>
-								<div class="flex items-center gap-2 pt-1 text-sm text-slate-500">
+								<div class="flex items-center gap-2 pt-1 text-sm text-slate-500 dark:text-slate-400">
 									<span class="h-2 w-2 rounded-full bg-amber-400 animate-pulse"></span>
 									<span>Building</span>
 								</div>
@@ -100,8 +141,8 @@
 									<img src="./UMBRA-logo.png" alt="Umbra logo" class="h-full w-full object-cover" />
 								</span>
 								<div>
-									<p class="text-sm font-medium text-ink">Umbra VibeWorks</p>
-									<p class="text-xs text-slate-500">Static site • Tailwind • GitHub Pages</p>
+									<p class="text-sm font-medium text-ink dark:text-slate-50">Umbra VibeWorks</p>
+									<p class="text-xs text-slate-500 dark:text-slate-400">Static site • Tailwind • GitHub Pages</p>
 								</div>
 							</div>
 						</div>
@@ -112,25 +153,25 @@
 				<section id="highlights" class="reveal space-y-8">
 					<header class="space-y-2">
 						<p class="text-xs uppercase tracking-[0.35em] text-slate-400">Highlights</p>
-						<h2 class="font-display text-3xl text-ink">What I ship</h2>
-						<p class="max-w-2xl text-base text-slate-600">A small set of repeatable strengths—kept practical and demo-friendly.</p>
+						<h2 class="font-display text-3xl text-ink dark:text-slate-50">What I ship</h2>
+						<p class="max-w-2xl text-base text-slate-600 dark:text-slate-300">A small set of repeatable strengths—kept practical and demo-friendly.</p>
 					</header>
 
 					<div class="grid gap-6 md:grid-cols-3">
-						<article class="hover-lift rounded-3xl border border-white/60 bg-white/70 p-6 shadow-sheet backdrop-blur">
+						<article class="hover-lift rounded-3xl border border-white/60 bg-white/70 p-6 shadow-sheet backdrop-blur transition-colors hover:border-indigo-300/70 hover:bg-white/85 dark:border-white/10 dark:bg-slate-950/35 dark:hover:border-indigo-400/30 dark:hover:bg-slate-950/55">
 							<p class="text-xs uppercase tracking-[0.35em] text-slate-500">Prototype</p>
-							<h3 class="mt-3 font-display text-2xl text-ink">Fast, believable demos</h3>
-							<p class="mt-3 text-base text-slate-600">Interactive prototypes that answer the hard question quickly.</p>
+							<h3 class="mt-3 font-display text-2xl text-ink dark:text-slate-50">Fast, believable demos</h3>
+							<p class="mt-3 text-base text-slate-600 dark:text-slate-300">Interactive prototypes that answer the hard question quickly.</p>
 						</article>
-						<article class="hover-lift rounded-3xl border border-white/60 bg-white/70 p-6 shadow-sheet backdrop-blur">
+						<article class="hover-lift rounded-3xl border border-white/60 bg-white/70 p-6 shadow-sheet backdrop-blur transition-colors hover:border-indigo-300/70 hover:bg-white/85 dark:border-white/10 dark:bg-slate-950/35 dark:hover:border-indigo-400/30 dark:hover:bg-slate-950/55">
 							<p class="text-xs uppercase tracking-[0.35em] text-slate-500">System</p>
-							<h3 class="mt-3 font-display text-2xl text-ink">Clean UI foundations</h3>
-							<p class="mt-3 text-base text-slate-600">Typography, spacing, components, motion—consistent and intentional.</p>
+							<h3 class="mt-3 font-display text-2xl text-ink dark:text-slate-50">Clean UI foundations</h3>
+							<p class="mt-3 text-base text-slate-600 dark:text-slate-300">Typography, spacing, components, motion—consistent and intentional.</p>
 						</article>
-						<article class="hover-lift rounded-3xl border border-white/60 bg-white/70 p-6 shadow-sheet backdrop-blur">
+						<article class="hover-lift rounded-3xl border border-white/60 bg-white/70 p-6 shadow-sheet backdrop-blur transition-colors hover:border-indigo-300/70 hover:bg-white/85 dark:border-white/10 dark:bg-slate-950/35 dark:hover:border-indigo-400/30 dark:hover:bg-slate-950/55">
 							<p class="text-xs uppercase tracking-[0.35em] text-slate-500">Log</p>
-							<h3 class="mt-3 font-display text-2xl text-ink">High-signal writing</h3>
-							<p class="mt-3 text-base text-slate-600">Short updates that capture decisions, tradeoffs, and next moves.</p>
+							<h3 class="mt-3 font-display text-2xl text-ink dark:text-slate-50">High-signal writing</h3>
+							<p class="mt-3 text-base text-slate-600 dark:text-slate-300">Short updates that capture decisions, tradeoffs, and next moves.</p>
 						</article>
 					</div>
 				</section>
@@ -140,17 +181,17 @@
 					<header class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
 						<div class="space-y-2">
 							<p class="text-xs uppercase tracking-[0.35em] text-slate-400">Latest</p>
-							<h2 class="font-display text-3xl text-ink">Recent logs</h2>
-							<p class="text-base text-slate-600">Work in progress.</p>
+							<h2 class="font-display text-3xl text-ink dark:text-slate-50">Recent logs</h2>
+							<p class="text-base text-slate-600 dark:text-slate-300">Work in progress.</p>
 						</div>
-						<a href="./logs.html" class="text-sm font-medium text-slate-600 transition hover:text-ink">View more →</a>
+						<a href="./logs.html" class="text-sm font-medium text-slate-600 transition hover:text-indigo-700 dark:text-slate-300 dark:hover:text-indigo-200">View more →</a>
 					</header>
 
-					<div class="rounded-3xl border border-white/60 bg-white/70 p-6 shadow-sheet backdrop-blur">
+					<div class="hover-lift rounded-3xl border border-white/60 bg-white/70 p-6 shadow-sheet backdrop-blur transition-colors hover:border-indigo-300/70 hover:bg-white/85 dark:border-white/10 dark:bg-slate-950/35 dark:hover:border-indigo-400/30 dark:hover:bg-slate-950/55">
 						<div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
 							<div>
 								<p class="text-xs uppercase tracking-[0.3em] text-slate-500">Work in progress</p>
-								<p class="mt-2 text-base text-slate-600">Latest entries will appear here once published.</p>
+								<p class="mt-2 text-base text-slate-600 dark:text-slate-300">Latest entries will appear here once published.</p>
 							</div>
 							<a href="./logs.html" class="hover-lift rounded-full border border-slate-200/80 bg-white/70 px-4 py-2 text-sm font-medium text-ink backdrop-blur transition active:scale-95">Open logs</a>
 						</div>
@@ -161,15 +202,15 @@
 				<section id="past" class="reveal space-y-8">
 					<header class="space-y-2">
 						<p class="text-xs uppercase tracking-[0.35em] text-slate-400">Past</p>
-						<h2 class="font-display text-3xl text-ink">Completed projects</h2>
-						<p class="text-base text-slate-600">None yet.</p>
+						<h2 class="font-display text-3xl text-ink dark:text-slate-50">Completed projects</h2>
+						<p class="text-base text-slate-600 dark:text-slate-300">None yet.</p>
 					</header>
-					<div class="rounded-3xl border border-white/60 bg-white/70 p-6 shadow-sheet backdrop-blur">
-						<p class="text-base text-slate-600">Shipped work will be archived here with links to artifacts and a short retro.</p>
+					<div class="hover-lift rounded-3xl border border-white/60 bg-white/70 p-6 shadow-sheet backdrop-blur transition-colors hover:border-indigo-300/70 hover:bg-white/85 dark:border-white/10 dark:bg-slate-950/35 dark:hover:border-indigo-400/30 dark:hover:bg-slate-950/55">
+						<p class="text-base text-slate-600 dark:text-slate-300">Shipped work will be archived here with links to artifacts and a short retro.</p>
 					</div>
 				</section>
 
-				<footer class="reveal space-y-4 border-t border-white/70 pt-10 text-sm text-slate-500">
+				<footer class="reveal space-y-4 border-t border-white/70 pt-10 text-sm text-slate-500 dark:border-white/10 dark:text-slate-400">
 					<div class="flex flex-wrap items-center justify-between gap-4">
 						<div class="flex items-center gap-2">
 							<span class="h-2 w-2 rounded-full bg-amber-400 animate-pulse"></span>
